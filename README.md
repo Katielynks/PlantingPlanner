@@ -20,6 +20,7 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 ---
 
 ## *User Stories*
-- As a user, I want to be able to add a plant to the list of plants
+- As a user, I want to be able to add a plant to the list of plants and specify it's name, species, and type
 - As a user, I want to be able to remove a plant from the list of plants
 - As a user, I want to be able to view a plant from the list of plants
+- As a user, I want to be able to view the list of plants
