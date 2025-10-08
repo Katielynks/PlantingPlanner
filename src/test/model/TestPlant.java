@@ -11,11 +11,13 @@ import java.time.LocalDate;
 public class TestPlant {
     Plant testPlant;
     LocalDate currentDate = LocalDate.now();
+    String note1 = "Needs good air circulation to prevent mildew";
+    String note2 = "Regular deadheading needed";
+    String note3 = "Needs good air circulation to prevent mildew";
     
     @BeforeEach
     void runBefore() {
         testPlant = new Plant("tea rose", "Oregold", 2);
-
     }
 
     @Test
@@ -39,27 +41,27 @@ public class TestPlant {
     
     @Test
     void testAddNote() {
-        testPlant.addNote("Needs good air circulation to prevent mildew");
+        testPlant.addNote(note1);
         assertEquals(1, testPlant.getNotes().size());
     }
 
     @Test
     void testAddMultipleNotes() {
-        testPlant.addNote("Needs good air circulation to prevent mildew");
+        testPlant.addNote(note1);
         assertEquals(1, testPlant.getNotes().size());
-        testPlant.addNote("Regular deadheading needed");
+        testPlant.addNote(note2);
         assertEquals(2, testPlant.getNotes().size());
-        testPlant.addNote("Add mulch to retain soil moisture");
+        testPlant.addNote(note3);
         assertEquals(3, testPlant.getNotes().size());
     }
 
     @Test
     void testRemoveNote() {
-        testPlant.addNote("Needs good air circulation to prevent mildew");
+        testPlant.addNote(note1);
+        testPlant.addNote(note2);
+        assertEquals(2, testPlant.getNotes().size());
+        testPlant.removeNote(2);
         assertEquals(1, testPlant.getNotes().size());
-        testPlant.removeNote(1);
-        assertEquals(0, testPlant.getNotes().size());
     }
-
 
 }
