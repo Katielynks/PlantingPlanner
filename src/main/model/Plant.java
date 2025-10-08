@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 //Represents a plant having a name, species, type, lastWatered date, and corresponding notes
@@ -8,8 +9,10 @@ public class Plant {
     private String subtype;          // subtype of the species
     private int category;            // number corresponding to plant category:
                                      // 1 = Structurals, 2 = Flowers, 3 = Foods    
-    private String lastWatered;      // last time the plant was watered 
+    private String lastWatered;      // last date the plant was watered 
     private ArrayList<String> notes; // list of notes with info about the plant
+
+    LocalDate currentDate = LocalDate.now();
 
     /*
     * REQUIRES: category must be an integer from 1 to 3
@@ -18,51 +21,56 @@ public class Plant {
     *          There are no notes in the list for this plant.
     */
     public Plant(String name, String subtype, int category) {
-        // stub
+        this.name = name;
+        this.subtype = subtype;
+        this.category = category;
+        this.lastWatered = currentDate.toString();
+        this.notes = new ArrayList<String>();
     }
 
     public String getName() {
-        return ""; // stub
+        return name;
     }
     
     public String getSubtype() {
-        return ""; // stub
+        return subtype; 
     }
 
-    public int getType() {
-        return 0; // stub  
+    public int getCategory() {
+        return category;
     }
 
     public ArrayList<String> getNotes() {
-        return null; // stub  
+        return notes;
     }   
     
     public String getLastWatered() {
-        return ""; // stub  
+        return lastWatered; 
     }
 
     //MODIFIES: this
     //EFFECTS: Changes the lastWatered date to the one specified
     public void setLastWatered(String date) {
+        lastWatered = date;
     }
 
     //MODIFIES: this
     //EFFECTS: changes the watered date to the current date
     public void waterPlant() {
-        // stub  
+        lastWatered = currentDate.toString();
     }
 
     //MODIFIES: this
     //EFFECTS: adds a note about the plant
     public void addNote(String note) {
-        // stub  
+        notes.add(note);
     }
 
     //REQUIRES: notes.size() >= 1 and noteNumber is between 1 and notes.size()
     //MODIFIES: this
     //EFFECTS: removes the note about the plant corresponding to its number
     public void removeNote(int noteNumber) {
-        // stub  
-    }
+        notes.remove(noteNumber - 1);
+        }
 
 }
