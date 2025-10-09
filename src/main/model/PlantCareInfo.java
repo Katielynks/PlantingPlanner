@@ -10,40 +10,43 @@ public class PlantCareInfo {
 
     //REQUIRES: sunlight should be an integer from 0 - 3
     //EFFECTS: Constructs on object with all the information to take care of the plant
-    public PlantCareInfo(String wateringFreq, int sunlight, String soiltype, String fertilizer) {
-        //stub
+    public PlantCareInfo(String wateringFreq, int sunlight, String soilType, String fertilizer) {
+        this.wateringFreq = wateringFreq;
+        this.sunlight = sunlight;
+        this.soilType = soilType;
+        this.fertilizer = fertilizer;
     }
 
     public String getWateringFreq() {
-        return ""; //stub
+        return wateringFreq;
     }
 
     public int getSunlight() {
-        return 0; //stub
+        return sunlight;
     }
 
     public String getSoilType() {
-        return ""; //stub
+        return soilType;
     }
 
     public String getfertilizer() {
-        return ""; //stub
+        return fertilizer;
     }
     
-    public void setWateringFreq(String frequency) {
-        //stub
+    public void setWateringFreq(String newWateringFreq) {
+        wateringFreq = newWateringFreq;
     }
 
-    public void setSunlight(int sunlight) {
-        //stub
+    public void setSunlight(int newSunlight) {
+        sunlight = newSunlight;
     }
 
-    public void setSoilType(String type) {
-        //stub
+    public void setSoilType(String newSoiltype) {
+        soilType = newSoiltype;
     }
 
-    public void setFertilizer(String fertilizer) {
-        //stub
+    public void setFertilizer(String newFertilizer) {
+        fertilizer = newFertilizer;
     }
 
 }
