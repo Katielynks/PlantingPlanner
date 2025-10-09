@@ -26,6 +26,10 @@ public class TestPlant {
         assertEquals("Oregold", testPlant.getSubtype());
         assertEquals(2, testPlant.getCategory());
         assertEquals(currentDate.toString(), testPlant.getLastWatered());
+        assertEquals("none", testPlant.getCareInfo().getWateringFreq());
+        assertEquals(0, testPlant.getCareInfo().getSunlight());
+        assertEquals("none", testPlant.getCareInfo().getSoilType());
+        assertEquals("none", testPlant.getCareInfo().getFertilizer());
         assertTrue(testPlant.getNotes().isEmpty());
         
     }
@@ -62,6 +66,34 @@ public class TestPlant {
         assertEquals(2, testPlant.getNotes().size());
         testPlant.removeNote(2);
         assertEquals(1, testPlant.getNotes().size());
+    }
+
+    @Test
+    void testchangeWateringFreqInfo() {
+        assertEquals("none", testPlant.getCareInfo().getWateringFreq());
+        testPlant.changeWateringFreqInfo("weekly");
+        assertEquals("weekly", testPlant.getCareInfo().getWateringFreq());
+    }
+
+    @Test
+    void testchangeSunlightInfo() {
+        assertEquals(0, testPlant.getCareInfo().getSunlight());
+        testPlant.changeSunlightInfo(1);
+        assertEquals(1, testPlant.getCareInfo().getSunlight());
+    }
+
+    @Test
+    void testchangeSoilTypeInfo() {
+        assertEquals("none", testPlant.getCareInfo().getSoilType());
+        testPlant.changeSoilTypeInfo("loam");
+        assertEquals("loam", testPlant.getCareInfo().getSoilType());
+    }
+
+    @Test
+    void testchangeFertilizerInfo() {
+        assertEquals("none", testPlant.getCareInfo().getFertilizer());
+        testPlant.changeFertilizerInfo("cedar mulch");
+        assertEquals("cedar mulch", testPlant.getCareInfo().getFertilizer());
     }
 
 }
