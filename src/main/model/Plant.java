@@ -27,6 +27,7 @@ public class Plant {
         this.subtype = subtype;
         this.category = category;
         this.lastWatered = currentDate.toString();
+        this.careInfo = new PlantCareInfo("none",0, "none", "none");
         this.notes = new ArrayList<String>();
     }
 
@@ -48,6 +49,10 @@ public class Plant {
     
     public String getLastWatered() {
         return lastWatered; 
+    }
+
+    public PlantCareInfo getCareInfo() {
+        return careInfo;
     }
 
     //MODIFIES: this
@@ -73,30 +78,30 @@ public class Plant {
     //EFFECTS: removes the note about the plant corresponding to its number
     public void removeNote(int noteNumber) {
         notes.remove(noteNumber - 1);
-        }
+    }
 
     //MODIFIES: this, careInfo
     //EFFECTS: changes the WateringFrequency to the new specified one
     public void changeWateringFreqInfo(String newFreq) {
-        //stub
+        careInfo.setWateringFreq(newFreq);
     }
 
     //REQUIRES: newSunlight is an integer from 0 to 3
     //MODIFIES: this, careInfo
     //EFFECTS: changes the Sunlight need to the new specified one
     public void changeSunlightInfo(int newSunlight) {
-        //stub
+        careInfo.setSunlight(newSunlight);
     }
 
     //MODIFIES: this, careInfo
     //EFFECTS: changes the Soil Type to the new specified one
     public void changeSoilTypeInfo(String newType) {
-        //stub
+        careInfo.setSoilType(newType);
     }
 
     //MODIFIES: this, careInfo
     //EFFECTS: changes the Fertilizer to the new specified one
     public void changeFertilizerInfo(String newFertilizer) {
-        //stub
+        careInfo.setFertilizer(newFertilizer);
     }
 }
