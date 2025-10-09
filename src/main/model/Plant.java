@@ -10,6 +10,7 @@ public class Plant {
     private int category;            // number corresponding to plant category:
                                      // 1 = Structurals, 2 = Flowers, 3 = Foods    
     private String lastWatered;      // last date the plant was watered 
+    private PlantCareInfo careInfo;  // all the information about how to care for the plant
     private ArrayList<String> notes; // list of notes with info about the plant
 
     LocalDate currentDate = LocalDate.now();
@@ -18,6 +19,7 @@ public class Plant {
     * REQUIRES: category must be an integer from 1 to 3
     * EFFECTS: Constructs a Plant with given name, subtype, and category;
     *          The lastWatered is set to the current date;
+    *          Initializes careInfo with a new PlantCareInfo object with default values
     *          There are no notes in the list for this plant.
     */
     public Plant(String name, String subtype, int category) {
@@ -73,4 +75,28 @@ public class Plant {
         notes.remove(noteNumber - 1);
         }
 
+    //MODIFIES: this, careInfo
+    //EFFECTS: changes the WateringFrequency to the new specified one
+    public void changeWateringFreqInfo(String newFreq) {
+        //stub
+    }
+
+    //REQUIRES: newSunlight is an integer from 0 to 3
+    //MODIFIES: this, careInfo
+    //EFFECTS: changes the Sunlight need to the new specified one
+    public void changeSunlightInfo(int newSunlight) {
+        //stub
+    }
+
+    //MODIFIES: this, careInfo
+    //EFFECTS: changes the Soil Type to the new specified one
+    public void changeSoilTypeInfo(String newType) {
+        //stub
+    }
+
+    //MODIFIES: this, careInfo
+    //EFFECTS: changes the Fertilizer to the new specified one
+    public void changeFertilizerInfo(String newFertilizer) {
+        //stub
+    }
 }
