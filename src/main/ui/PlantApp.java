@@ -20,7 +20,7 @@ public class PlantApp {
 
     //MODIFIES: this
     //EFFECTS: displays menu and processes user input
-    private void runPlantApp() {
+    private void runPlantApp() {   //Note: Created this method referencing the example project TellerApp
         boolean continueProgram = true;
         String command = null;
 
@@ -326,14 +326,7 @@ public class PlantApp {
                     addNotes(plantToEdit);
                     break;
                 } else if (userSelection.equals("r")) {
-                    System.out.println("Provide the note number you want to remove:");
-                    System.out.println("Notes: ");
-                    for (String n : plantToEdit.getNotes()) {
-                        System.out.println(n);
-                    }
-                    int noteNumber = input.nextInt();
-                    plantToEdit.removeNote(noteNumber);
-                    System.out.println("Note number " + noteNumber + " has been removed!");
+                    removePlantNote(plantToEdit);
                 
                 } else {
                     System.out.println("Sorry, your selection is not valid. Try again.");
@@ -345,5 +338,17 @@ public class PlantApp {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes a note from the plant
+    private void removePlantNote(Plant plantToEdit) {
+        System.out.println("Provide the note number you want to remove:");
+        System.out.println("Notes: ");
+        for (String n : plantToEdit.getNotes()) {
+            System.out.println(n);
+        }
+        int noteNumber = input.nextInt();
+        plantToEdit.removeNote(noteNumber);
+        System.out.println("Note number " + noteNumber + " has been removed!");
+    }
 
 }
