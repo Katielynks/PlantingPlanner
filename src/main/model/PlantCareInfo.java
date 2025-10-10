@@ -29,7 +29,7 @@ public class PlantCareInfo {
         return soilType;
     }
 
-    public String getfertilizer() {
+    public String getFertilizer() {
         return fertilizer;
     }
     
