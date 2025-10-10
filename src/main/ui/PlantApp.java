@@ -327,7 +327,7 @@ public class PlantApp {
                     break;
                 } else if (userSelection.equals("r")) {
                     removePlantNote(plantToEdit);
-                
+                    break;
                 } else {
                     System.out.println("Sorry, your selection is not valid. Try again.");
                 }
