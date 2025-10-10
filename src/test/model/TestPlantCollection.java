@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 public class TestPlantCollection {
-    public PlantCollection testCollection1;
-    public PlantCollection testCollection2;
-    public Plant plant1;
-    public Plant plant2;
-    public Plant plant3;
-    public Plant plant4;
-    public Plant plant5;
-    public Plant plant6;
+    private PlantCollection testCollection1;
+    private PlantCollection testCollection2;
+    private Plant plant1;
+    private Plant plant2;
+    private Plant plant3;
+    private Plant plant4;
+    private Plant plant5;
+    private Plant plant6;
 
     @BeforeEach
     void runBefore() {
