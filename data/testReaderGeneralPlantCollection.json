@@ -1,0 +1,33 @@
+{
+    "plants": [
+        {
+            "name": "cactus",
+            "subtype": "aloe",
+            "category": 1,
+            "lastWatered": "2025-10-19",
+            "wateringFreq": "weekly",
+            "sunlight": 2,
+            "soilType": "sand",
+            "fertilizer": "none",
+            "notes": [
+                "needs warm space",
+                "grows quickly"
+            ]
+        },
+        {
+            "name": "rose",
+            "subtype": "tea",
+            "category": 2,
+            "lastWatered": "2025-10-20",
+            "wateringFreq": "biweekly",
+            "sunlight": 1,
+            "soilType": "clay",
+            "fertilizer": "mulch",
+            "notes": [
+                "likes direct sun",
+                "needs ventilation",
+                "can get mold"
+            ]
+        }
+    ]
+}
