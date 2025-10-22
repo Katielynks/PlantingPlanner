@@ -1,41 +1,43 @@
 package persistence;
 
-import java.io.FileNotFoundException;
-
-import org.json.*;
+import java.io.*;
 
 import model.PlantCollection;
+import org.json.JSONObject;
 
 //Represents a writer that writes JSON representation of PlantCollection to file
 public class JsonWriter {
-
+    private static final int TAB = 4;
+    private String destination;
+    private PrintWriter writer;
 
     //EFFECTS: constructs writer to write to file destination
-    public JsonWriter(String fileDesination) {
-        //stub
+    public JsonWriter(String destination) {
+        this.destination = destination;
     }
 
     //MODIFIES: this
     //EFFECTS: opens writer, throws FileNotFoundException if destination file cannot be opened
     public void open() throws FileNotFoundException {
-        //stub
+        writer = new PrintWriter(new File(destination));
     }
 
     //MODIFIES: this
     //EFFECTS: writes JSON representation of PlantCollection to file
     public void write(PlantCollection pc) {
-        //stub        
+        JSONObject json = pc.toJson();
+        saveToFile(json.toString(TAB));      
     }
 
     //MODIFIES: this
     //EFFECTS: closes writer
     public void close() {
-        //stub
+        writer.close();
     }
 
     // MODIFIES: this
     // EFFECTS: writes string to file
     public void saveToFile(String json) {
-        //stub
+        writer.print(json);
     }
 }
