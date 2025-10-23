@@ -3,8 +3,12 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 //Represents a plant having a name, species, type, lastWatered date, and corresponding notes
-public class Plant {
+public class Plant implements Writable {
     private String name;             // name of the plant
     private String subtype;          // subtype of the species
     private int category;            // number corresponding to plant category:
@@ -104,4 +108,12 @@ public class Plant {
     public void changeFertilizerInfo(String newFertilizer) {
         careInfo.setFertilizer(newFertilizer);
     }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
+    }
 }
+
+
+
