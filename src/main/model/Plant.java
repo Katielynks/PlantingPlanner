@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -111,8 +112,26 @@ public class Plant implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("subtype", subtype);
+        json.put("category", category);
+        json.put("lastWatered", lastWatered);
+        json.put("wateringFreq", careInfo.getWateringFreq());
+        json.put("sunlight", careInfo.getSunlight());
+        json.put("soilType", careInfo.getSoilType());
+        json.put("fertilizer", careInfo.getFertilizer());
+        
+        JSONArray jsonNotes = new JSONArray();
+        for (String s : notes) {
+            jsonNotes.put(s);
+        }
+
+        json.put("notes", jsonNotes);
+
+        return json;
     }
+
 }
 
 
