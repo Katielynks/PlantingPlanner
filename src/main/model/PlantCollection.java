@@ -2,8 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 //Represents a list of all plants in the collection with filtering capabilites based on type
-public class PlantCollection {
+public class PlantCollection implements Writable {
     private ArrayList<Plant> collection;  
 
     //EFFECTS: Constructs an empty collection of plants
@@ -78,6 +82,16 @@ public class PlantCollection {
             }
         }
         return foodPlants;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
+    }
+
+    //EFFECTS: returns plants in this PlantCollection as a JSON array
+    private JSONArray plantsToJson() {
+        return null;
     }
 
 }
