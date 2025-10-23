@@ -3,6 +3,8 @@ package model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -94,6 +96,36 @@ public class TestPlant {
         assertEquals("none", testPlant.getCareInfo().getFertilizer());
         testPlant.changeFertilizerInfo("cedar mulch");
         assertEquals("cedar mulch", testPlant.getCareInfo().getFertilizer());
+    }
+
+    @Test
+    void testToJson() {
+        testPlant.setLastWatered("2025-10-19");
+        testPlant.changeWateringFreqInfo("weekly");
+        testPlant.changeSunlightInfo(2);
+        testPlant.changeSoilTypeInfo("sand");
+        testPlant.changeFertilizerInfo("none");
+        testPlant.addNote(note1);
+        testPlant.addNote(note2);
+        testPlant.addNote(note3);
+
+        JSONObject jsonTest = new JSONObject();
+        jsonTest.put("name", "tea rose");
+        jsonTest.put("subtype", "Oregold");
+        jsonTest.put("category", 2);
+        jsonTest.put("lastWatered", "2025-10-19");
+        jsonTest.put("wateringFreq", "weekly");
+        jsonTest.put("sunlight", 2);
+        jsonTest.put("soilType", "sand");
+        jsonTest.put("fertilizer", "none");
+        JSONArray notes = new JSONArray();
+        notes.put(note1);
+        notes.put(note2);
+        notes.put(note3);
+        jsonTest.put("notes", notes);
+
+        assertEquals(jsonTest.toString(), testPlant.toJson().toString());
+
     }
 
 }
