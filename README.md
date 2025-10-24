@@ -27,5 +27,5 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 - As a user, I want to be able to view the plants in the list of plants
 - As a user, I want to be able to filter the list of plants by category
 - As a user, I want to be able to add and remove the notes for a specified plant
-- As a user, I want to be given an option to save my collection of plants to file when I select the quit option
-- As a user, I want to be given the option to load my collection of plants when I start the application
+- As a user, I want to be given an option to save my collection of plants to file if I choose to do so
+- As a user, I want to be given the option to load my collection of plants when I choose to do so
