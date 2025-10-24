@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import org.json.*;
 
 //Represents a reader that reads PlantCollection from the JSON data stored in file
+//Created this class referencing the example project JsonSerializationDemo
 public class JsonReader {
     private String source;
 

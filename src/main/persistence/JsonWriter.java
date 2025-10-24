@@ -6,6 +6,7 @@ import model.PlantCollection;
 import org.json.JSONObject;
 
 //Represents a writer that writes JSON representation of PlantCollection to file
+//Created this class referencing the example project JsonSerializationDemo
 public class JsonWriter {
     private static final int TAB = 4;
     private String destination;
