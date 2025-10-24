@@ -22,7 +22,7 @@ public class PlantApp {
     private JsonReader jsonReader;
 
     //EFFECTS: runs the planting planner application
-    public PlantApp() throws FileNotFoundException{
+    public PlantApp() throws FileNotFoundException {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runPlantApp();
@@ -71,7 +71,7 @@ public class PlantApp {
             editplantInformation();
         } else if (command.equals("s")) {
             saveCollection();
-        } else if (command.equals("e")) {
+        } else if (command.equals("d")) {
             loadCollection();
         } else {
             System.out.println("Sorry, your selection is not valid.");
