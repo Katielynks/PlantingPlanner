@@ -2,18 +2,29 @@ package ui;
 
 import model.Plant;
 import model.PlantCollection;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 
 // Planting Planner application
+@ExcludeFromJacocoGeneratedReport
 public class PlantApp {
+    private static final String JSON_STORE = "./data/plantCollection.json";
     private PlantCollection collection;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the planting planner application
-    public PlantApp() {
+    public PlantApp() throws FileNotFoundException{
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runPlantApp();
     }
 
@@ -58,6 +69,10 @@ public class PlantApp {
             viewplantCollection();
         } else if (command.equals("e")) {
             editplantInformation();
+        } else if (command.equals("s")) {
+            saveCollection();
+        } else if (command.equals("e")) {
+            loadCollection();
         } else {
             System.out.println("Sorry, your selection is not valid.");
         }
@@ -81,6 +96,8 @@ public class PlantApp {
         System.out.println("v - View a plant");
         System.out.println("l - View a list of plants");
         System.out.println("e - Edit plant information");
+        System.out.println("s - Save collection to file");
+        System.out.println("d - Load collection from file");
         System.out.println("q - quit");
         System.out.println("-------------------------------------------");
     }
@@ -336,6 +353,29 @@ public class PlantApp {
 
         }
 
+    }
+
+    //EFFECTS: saves the collection to file
+    private void saveCollection() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(collection);
+            jsonWriter.close();  
+            System.out.println("Your collection has been saved to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    //EFFECTS: loads the collection from file
+    private void loadCollection() {
+        try {
+            collection = jsonReader.read();
+            System.out.println("Your collection was loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     //MODIFIES: this
