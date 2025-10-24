@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExcludeFromJacocoGeneratedReport
-public class JsonWriterTest extends JsonTest{
+public class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterInvalidFile() {
@@ -19,7 +19,7 @@ public class JsonWriterTest extends JsonTest{
             JsonWriter writer = new JsonWriter("./data/my\\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
-        } catch(IOException e) {
+        } catch (IOException e) {
             //pass
         }
     }
@@ -36,12 +36,15 @@ public class JsonWriterTest extends JsonTest{
             JsonReader reader = new JsonReader("./data/testWriterEmptyPlantCollection.json");
             pc = reader.read();
             assertEquals(0, pc.getCollection().size());
-        } catch(IOException e) {
+        } catch (IOException e) {
             fail("Exception should not have been thrown");
         }
     }
 
+
+    
     @Test
+    @SuppressWarnings("methodlength")
     void testWriterGeneralPlantCollection() {
         try {
             PlantCollection pc = new PlantCollection();

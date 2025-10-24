@@ -8,7 +8,7 @@ import model.Plant;
 
 @ExcludeFromJacocoGeneratedReport
 public class JsonTest {
-    protected void checkPlant(String name, String subType, int category, String lastWatered, ArrayList notesOfPlant, Plant plant) {
+    protected void checkPlant(String name, String subType, int category, String lastWatered, ArrayList<String> notesOfPlant, Plant plant) {
         assertEquals(name, plant.getName());
         assertEquals(subType, plant.getSubtype());
         assertEquals(category, plant.getCategory());
