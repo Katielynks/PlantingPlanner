@@ -2,6 +2,8 @@ package model;
 
 import static org.junit.Assert.assertEquals;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -79,4 +81,26 @@ public class TestPlantCollection {
     void testFilterFood() {
         assertEquals(3, testCollection2.filterFood().size());
     }
+
+    @Test
+    void testToJson() {
+        JSONObject json = testCollection2.toJson();
+        assertEquals(6, json.getJSONArray("plants").length());
+
+        JSONArray array = json.getJSONArray("plants");
+        assertEquals(6, array.length());
+
+        JSONObject firstPlant = array.getJSONObject(0);
+        assertEquals("palm tree", firstPlant.get("name"));
+        assertEquals("dwarf palmetto", firstPlant.get("subtype"));
+        assertEquals(1, firstPlant.get("category"));
+
+        JSONObject secondPlant = array.getJSONObject(1);
+        assertEquals("tea rose", secondPlant.get("name"));
+        assertEquals("oregold", secondPlant.get("subtype"));
+        assertEquals(2, secondPlant.get("category"));
+
+    }
+
+
 }
