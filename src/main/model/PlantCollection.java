@@ -86,12 +86,20 @@ public class PlantCollection implements Writable {
 
     @Override
     public JSONObject toJson() {
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("plants", plantsToJson());
+        return json;
     }
 
     //EFFECTS: returns plants in this PlantCollection as a JSON array
     private JSONArray plantsToJson() {
-        return null;
+        JSONArray jsonArray = new JSONArray();
+
+        for (Plant p : collection) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 
 }
