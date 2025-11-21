@@ -30,7 +30,9 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 - As a user, I want to be given an option to save my collection of plants to file if I choose to do so
 - As a user, I want to be given the option to load my collection of plants when I choose to do so
 
-# Instructions for End User
+---
+
+## *Instructions for End User*
 
 - You can view the panel that displays the plants that have already been added to the collection by clicking on the "View Collections" tab
 - You can select from several filters in the "Collections Tab" based on each plant's category.
