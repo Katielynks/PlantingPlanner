@@ -29,3 +29,14 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 - As a user, I want to be able to add and remove the notes for a specified plant
 - As a user, I want to be given an option to save my collection of plants to file if I choose to do so
 - As a user, I want to be given the option to load my collection of plants when I choose to do so
+
+# Instructions for End User
+
+- You can view the panel that displays the plants that have already been added to the collection by clicking on the "View Collections" tab
+- You can select from several filters in the "Collections Tab" based on each plant's category.
+- You can add multiple plants to your collection through the "Create New Plant" tab, adding your criteria, and clicking the "Save to Collection" button
+- You can locate my visual component by clicking on the "Load Collection", "Save Collection" or most other buttons. A pop-up screen will appear for 3 seconds providing an image with confirmation or notifying you of an invalid choice
+- You can save the state of the application by clicking the "Save Collection" button on the "Home Tab"
+- You can reload the state of the application by clicking the "Load Collection" button on the "Home Tab"
+- You can view any plant in your collection in the "View Plant" tab by inserting the name of the plant and clicking on enter. The information regarding that plant will display in the fields below.
+- You can edit any plant fields in the "Edit Plant" tab by inserting the name of your plant and clicking the "Enter" button. You can add notes by typing them in the text box underneath the notes display and clicking "Add". You can remove any notes by selecting the note in the list and clicking "Remove". Once all changes are made, click "Save" to save your changes
