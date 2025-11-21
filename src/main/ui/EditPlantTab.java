@@ -57,26 +57,15 @@ public class EditPlantTab extends Tabs {
         title = new JLabel("Edit a Plant");
         styleTitle(title, 265, 40);
 
-        selectionHeading = new JLabel("Select a plant:");
-        styleHeading(selectionHeading, 90, 135);
+        createHeaders();
 
         createPlantFields();
 
         createButtons();
 
-        listHeading = new JLabel("Edit Notes:");
-        styleHeading(listHeading, 90, 270);
+        JScrollPane listScrollPane = createNotesTable();
 
-        tableModel = new DefaultTableModel(new Object[][]{}, columnNames);
-        list = new JTable(tableModel);
-        list.setFont(new Font("Cambria", Font.BOLD, 14));
-        JScrollPane listScrollPane = new JScrollPane(list);
-        styleScrollPane(listScrollPane);
-        listScrollPane.setBounds(90,330,240,100);
-
-        JTableHeader header = list.getTableHeader();
-        header.setFont(new Font("Cambria", Font.BOLD, 18));
-        header.setBackground(new Color(131, 210, 230));
+        styleTableHeader(list);
 
         newNoteArea = new JTextArea();
         newNoteScrollPane = styleNotes(newNoteArea, 90, 483);
@@ -88,6 +77,31 @@ public class EditPlantTab extends Tabs {
         componentPane.add(newNoteScrollPane);
         panel.add(componentPane);
 
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Creates the two headers for this tab
+    private void createHeaders() {
+        selectionHeading = new JLabel("Select a plant:");
+        styleHeading(selectionHeading, 90, 135);
+
+        listHeading = new JLabel("Edit Notes:");
+        styleHeading(listHeading, 90, 270);
+    }
+
+
+
+    //MODIFIES: this
+    //EFFECTS: Creates a table with an empty model and returns the scroll pane
+    private JScrollPane createNotesTable() {
+        tableModel = new DefaultTableModel(new Object[][]{}, columnNames);
+        list = new JTable(tableModel);
+        list.setFont(new Font("Cambria", Font.BOLD, 14));
+        JScrollPane listScrollPane = new JScrollPane(list);
+        styleScrollPane(listScrollPane);
+        listScrollPane.setBounds(90,330,240,100);
+
+        return listScrollPane;
     }
 
     //MODIFIES: this
@@ -312,7 +326,6 @@ public class EditPlantTab extends Tabs {
         categoryCBox.setBackground(scrollBkgndColor);
     }
 
-
     private void styleScrollPane(JScrollPane scrollPane) {
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scrollPane.setOpaque(true);
@@ -329,7 +342,6 @@ public class EditPlantTab extends Tabs {
         }
         return dataNotes;
     }
-
 
     @Override 
     protected void styleButton(JButton button, int posX, int posY) { 
@@ -353,6 +365,14 @@ public class EditPlantTab extends Tabs {
         labelName.setForeground(new Color(0, 0, 0));
         labelName.setOpaque(false);
         labelName.setBounds(posX, posY, 200, 30);
+    }
+    
+    //MODIFIES: this
+    //EFFECTS: Customizes the appearance of the table header
+    private void styleTableHeader(JTable table) {
+        JTableHeader header = list.getTableHeader();
+        header.setFont(new Font("Cambria", Font.BOLD, 18));
+        header.setBackground(new Color(131, 210, 230));
     }
 
     public JPanel getPanel() {
