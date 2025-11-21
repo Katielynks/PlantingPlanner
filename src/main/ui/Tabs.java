@@ -2,10 +2,12 @@ package ui;
 
 import javax.swing.*;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Plant;
 
 import java.awt.*;
 
+@ExcludeFromJacocoGeneratedReport
 public abstract class Tabs {
     protected JPanel panel;
     protected Image backgroundImage;

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class EditPlantTab extends Tabs {
     private static final int columnLabel = 420;
     private static final int columnField = 520;
+    private static final Color scrollBkgndColor = new Color(230, 249, 255); 
 
     private JPanel componentPane;
 
@@ -61,13 +62,7 @@ public class EditPlantTab extends Tabs {
 
         createPlantFields();
 
-        enterButton = new JButton("Enter");
-        styleButton(enterButton, 254,185);
-
-        enterButton.addActionListener(e -> {
-            plantName = selectionField.getText();
-            addAllFields(plantName);
-        });
+        createButtons();
 
         listHeading = new JLabel("Edit Notes:");
         styleHeading(listHeading, 90, 270);
@@ -83,44 +78,79 @@ public class EditPlantTab extends Tabs {
         header.setFont(new Font("Cambria", Font.BOLD, 18));
         header.setBackground(new Color(131, 210, 230));
 
-        removeButton = new JButton("Remove");
-        styleButton(removeButton, 215,437);
-        removeButton.addActionListener(e -> {
-            collection.getPlant(plantName).removeNote(list.getSelectedRow() + 1);
-            tableModel.setDataVector(notesToArray(collection.getPlant(plantName).getNotes()), columnNames);
-        });
-
         newNoteArea = new JTextArea();
         newNoteScrollPane = styleNotes(newNoteArea, 90, 483);
-        
-        addButton = new JButton("Add");
-        styleButton(addButton, 112,437);
-        addButton.addActionListener(e -> {
-            String note = newNoteArea.getText();
-            collection.getPlant(plantName).addNote(note);
-            tableModel.setDataVector(notesToArray(collection.getPlant(plantName).getNotes()), columnNames);
-            newNoteArea.setText("");
-        });
-
-        saveButton = new JButton("Save");
-        styleButton(saveButton, 498,506);
-
-        saveButton.addActionListener(e -> {
-            updateAllFields(plantName);
-        });
-
 
         componentPane.add(title);
         componentPane.add(selectionHeading);
-        componentPane.add(enterButton);
         componentPane.add(listHeading);
         componentPane.add(listScrollPane);
-        componentPane.add(addButton);
-        componentPane.add(removeButton);
-        componentPane.add(saveButton);
         componentPane.add(newNoteScrollPane);
         panel.add(componentPane);
 
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Creates the four buttons that are used in this tab
+    public void createButtons() {
+
+        enterButton = new JButton("Enter");
+        styleButton(enterButton, 254,185);
+
+        enterButton.addActionListener(e -> enterButtonAction());
+
+        componentPane.add(enterButton);
+
+        removeButton = new JButton("Remove");
+        styleButton(removeButton, 215,437);
+
+        removeButton.addActionListener(e -> removeButtonAction());
+
+        componentPane.add(removeButton);
+
+        addButton = new JButton("Add");
+        styleButton(addButton, 112,437);
+        addButton.addActionListener(e -> addButtonAction());
+
+        componentPane.add(addButton);
+
+        saveButton = new JButton("Save");
+        styleButton(saveButton, 500,508);
+
+        saveButton.addActionListener(e -> saveButtonAction());
+
+        componentPane.add(saveButton);
+
+    }
+
+    //MODIFIES: this 
+    //EFFECTS: Designs the action for the addButton
+    public void addButtonAction() {
+        String note = newNoteArea.getText();
+        collection.getPlant(plantName).addNote(note);
+        tableModel.setDataVector(notesToArray(collection.getPlant(plantName).getNotes()), columnNames);
+        newNoteArea.setText("");
+    }
+
+    //REQUIRES: list.size() >= 0
+    //MODIFIES: this 
+    //EFFECTS: Designs the action for the removeButton
+    public void removeButtonAction() {
+        collection.getPlant(plantName).removeNote(list.getSelectedRow() + 1);
+        tableModel.setDataVector(notesToArray(collection.getPlant(plantName).getNotes()), columnNames);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Designs the action for the enterButton
+    public void enterButtonAction() {
+        plantName = selectionField.getText();
+        addAllFields(plantName);
+    }
+
+    //MODIFIES: this 
+    //EFFECTS: Designs the action for the saveButton
+    public void saveButtonAction() {
+        updateAllFields(plantName);
     }
 
     //MODIFIES: this
@@ -128,25 +158,15 @@ public class EditPlantTab extends Tabs {
     private void updateAllFields(String plantName) {
         String name = nameField.getText();
         String subtype = subTypeField.getText();
-        String categoryString = (String) categoryField.getSelectedItem();
-        int category = 1;
-        if (categoryString.equals("Flowers")) {
-            category = 2;
-        } else if (categoryString.equals("Foods")) {
-            category = 3;
-        }
+
+        int category = categoryToInt((String) categoryField.getSelectedItem());
 
         Plant plantUpdated = new Plant(name, subtype, category);
 
         plantUpdated.changeWateringFreqInfo(wateringFreqField.getText());
 
-        String sunlightString = (String) sunlightField.getSelectedItem();
-        int sunlight = 1;
-        if (sunlightString.equals("Partial sun")) {
-            sunlight = 2;
-        } else if (sunlightString.equals("Shade")) {
-            sunlight = 3;
-        }
+        int sunlight = sunlightToInt((String) sunlightField.getSelectedItem());
+
         plantUpdated.changeSunlightInfo(sunlight);
 
         plantUpdated.changeSoilTypeInfo(soilTypeField.getText());
@@ -165,6 +185,26 @@ public class EditPlantTab extends Tabs {
         collection.addToCollection(plantUpdated);
 
         collectionLoadedPopUp("images/dialoguePlantUpdated.png");
+    }
+
+    //EFFECTS: converts category to corresponding integer
+    private int categoryToInt(String categoryString) {
+        if (categoryString.equals("Flowers")) {
+            return 2;
+        } else if (categoryString.equals("Foods")) {
+            return 3;
+        }
+        return 1;
+    }
+
+    //EFFECTS: converts sunlight to corresponding integer
+    private int sunlightToInt(String sunlightString) {
+        if (sunlightString.equals("Partial sun")) {
+            return 2;
+        } else if (sunlightString.equals("Shade")) {
+            return 3;
+        }
+        return 1;
     }
 
     //MODIFIES: this
@@ -214,7 +254,7 @@ public class EditPlantTab extends Tabs {
     //EFFECTS: Changes appearance of the notes text area
     public JScrollPane styleNotes(JTextArea notes, int posX, int posY) {
         notes.setFont(new Font("Cambria", Font.BOLD, 18));
-        notes.setBackground(new Color(230, 249, 255));
+        notes.setBackground(scrollBkgndColor);
         notes.setLineWrap(true);
 
         JScrollPane notesScrollPane = new JScrollPane(notes);
@@ -261,7 +301,7 @@ public class EditPlantTab extends Tabs {
     public void styleField(JFormattedTextField field, int posX, int posY) {
         field.setBounds(posX, posY,150,30);
         field.setFont(new Font("Cambria", Font.BOLD, 18));
-        field.setBackground(new Color(230, 249, 255));
+        field.setBackground(scrollBkgndColor);
         field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     }
 
@@ -269,7 +309,7 @@ public class EditPlantTab extends Tabs {
     public void styleCategoryComboBox(JComboBox<String> categoryCBox, int posX, int posY, int width) {
         categoryCBox.setBounds(posX, posY, width,30);
         categoryCBox.setFont(new Font("Cambria", Font.BOLD, 18));
-        categoryCBox.setBackground(new Color(230, 249, 255));
+        categoryCBox.setBackground(scrollBkgndColor);
     }
 
 
@@ -277,7 +317,7 @@ public class EditPlantTab extends Tabs {
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scrollPane.setOpaque(true);
         scrollPane.setBackground(new Color(230, 249, 255));
-        scrollPane.getViewport().setBackground(new Color(230, 249, 255));
+        scrollPane.getViewport().setBackground(scrollBkgndColor);
     }
 
     private Object [][] notesToArray(ArrayList<String> notes) {

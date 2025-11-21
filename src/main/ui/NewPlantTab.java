@@ -2,12 +2,14 @@ package ui;
 
 import javax.swing.*;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Plant;
 import model.PlantCollection;
 
 import java.awt.*;
 
 // New Plant Tab of the Planting Planner application
+@ExcludeFromJacocoGeneratedReport
 public class NewPlantTab extends Tabs {
     private static final int column1 = 125;
     private static final int column2 = 420;    

@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Plant;
 import model.PlantCollection;
 import persistence.JsonReader;
@@ -12,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 // Home Page Tab of the Planting Planner application
+@ExcludeFromJacocoGeneratedReport
 public class HomePageTab extends Tabs {
     private JPanel panel;
     private JLabel title;

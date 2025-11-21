@@ -4,12 +4,14 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Plant;
 import model.PlantCollection;
 
 import java.awt.*;
 import java.util.ArrayList;
 
+@ExcludeFromJacocoGeneratedReport
 public class ViewCollectionsTab extends Tabs {
     private static final int column1 = 30;
 
