@@ -23,12 +23,12 @@ public abstract class Tabs {
         popUp.setLocationRelativeTo(null);
         popUp.setVisible(true);
 
-        new javax.swing.Timer(3000, evt ->popUp.dispose()).start();
+        new javax.swing.Timer(3000, evt -> popUp.dispose()).start();
     }
 
     //EFFECTS: Changes the appearance of the button
     protected void styleButton(JButton button, int posX, int posY) {
-        button.setBounds(posX, posY, 200 ,40);
+        button.setBounds(posX, posY, 200, 40);
         button.setFont(new Font("Cambria", Font.BOLD, 20));
         button.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         button.setBorderPainted(false);

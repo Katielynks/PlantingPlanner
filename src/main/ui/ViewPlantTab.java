@@ -8,6 +8,8 @@ import model.PlantCollection;
 import java.awt.*;
 
 public class ViewPlantTab extends Tabs {
+    private static final  int column1 = 125;
+    private static final  int column2 = 420;
 
     private JLabel title;
     private JPanel componentPane;
@@ -15,6 +17,7 @@ public class ViewPlantTab extends Tabs {
     private JLabel instructionsHeading;
     private JLabel notesHeading;
 
+    private JFormattedTextField selectionField;
     private JFormattedTextField nameField;
     private JFormattedTextField subTypeField;
     private JFormattedTextField categoryField;
@@ -23,13 +26,10 @@ public class ViewPlantTab extends Tabs {
     private JFormattedTextField soilTypeField;
     private JFormattedTextField fertilizerField;
     private JTextArea notes;
-    private JButton enterButton;
     
-    private int column1 = 125;
-    private int column2 = 420;
+    private JButton enterButton;
 
     private PlantCollection collection;
-    private JFormattedTextField selectionField;
     private String plantName;
 
 
@@ -67,6 +67,7 @@ public class ViewPlantTab extends Tabs {
     }
 
 
+    //MODIFIES: this
     //EFFECTS: Creates all plant fields with labels and corresponding fields
     private void createPlantFields() {
         selectionField = createLabeledField("", 365, 150, 365, 150);
@@ -86,6 +87,20 @@ public class ViewPlantTab extends Tabs {
         fertilizerField = createLabeledField("Fertilizer:", column2, 470, 515, 470);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Constructs a text field with label and field
+    private JFormattedTextField createLabeledField(String labelText, int labelX, int labelY, int fieldX, int fieldY) {
+        JLabel label = new JLabel(labelText);
+        styleLabel(label, labelX, labelY);
+        JFormattedTextField field = new JFormattedTextField();
+        styleField(field, fieldX, fieldY);
+
+        componentPane.add(label);
+        componentPane.add(field);
+        return field;
+    }    
+    
+    //MODIFIES: this
     //EFFECTS: adds all the fields according to the inputted plant name
     private void addAllFields(String plantName) {
         Plant plantToView = collection.getPlant(plantName);
@@ -108,18 +123,7 @@ public class ViewPlantTab extends Tabs {
 
     }
 
-    //EFFECTS: Constructs a text field with label and field
-    private JFormattedTextField createLabeledField(String labelText, int labelX, int labelY, int fieldX, int fieldY) {
-        JLabel label = new JLabel(labelText);
-        styleLabel(label, labelX, labelY);
-        JFormattedTextField field = new JFormattedTextField();
-        styleField(field, fieldX, fieldY);
-
-        componentPane.add(label);
-        componentPane.add(field);
-        return field;
-    }
-
+    //MODIFIES: this
     //EFFECTS: Constructs a notes section with heading and scroll
     private void createNotesSection(int posX, int posY) {
         notes = new JTextArea(5, 20);
@@ -135,6 +139,7 @@ public class ViewPlantTab extends Tabs {
         componentPane.add(notesScrollPane);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the headings
     public void styleHeading(JLabel heading, int posX, int posY) {
         heading.setFont(new Font("Gabriola", Font.BOLD, 35));
@@ -144,6 +149,7 @@ public class ViewPlantTab extends Tabs {
         heading.setOpaque(false);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of labels next to each field
     public void styleLabel(JLabel labelName, int posX, int posY) {
         labelName.setFont(new Font("Cambria", Font.BOLD, 20));
@@ -152,6 +158,7 @@ public class ViewPlantTab extends Tabs {
         labelName.setBounds(posX, posY, 200, 30);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the fields
     public void styleField(JFormattedTextField field, int posX, int posY) {
         field.setBounds(posX, posY,150,30);
@@ -160,6 +167,7 @@ public class ViewPlantTab extends Tabs {
         field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the combo boxes
     public void styleCategoryComboBox(JComboBox<String> categoryCBox, int posX, int posY, int width) {
         categoryCBox.setBounds(posX, posY, width,30);
@@ -167,6 +175,7 @@ public class ViewPlantTab extends Tabs {
         categoryCBox.setBackground(new Color(230, 249, 255));
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the notes text area
     public JScrollPane styleNotes(JTextArea notes, int posX, int posY) {
         notes.setFont(new Font("Cambria", Font.BOLD, 18));
@@ -180,45 +189,6 @@ public class ViewPlantTab extends Tabs {
 
         return notesScrollPane;
     }
-
-
-
-    //     private String categoryToString(Plant p) {
-    //     String category;
-    //     switch (p.getCategory()) {
-    //         case 1:
-    //             category = "structurals";
-    //             break;
-    //         case 2:
-    //             category = "flowers";
-    //             break;
-    //         case 3:
-    //             category = "foods";
-    //             break;
-    //         default:
-    //             category = "none";
-    //     }
-    //     return category;
-    // }
-
-
-    // private String sunlightToString(Plant p) {
-    //     String sunlight;
-    //     switch (p.getCareInfo().getSunlight()) {
-    //         case 1:
-    //             sunlight = "full sun";
-    //             break;
-    //         case 2:
-    //             sunlight = "partial sun";
-    //             break;
-    //         case 3:
-    //             sunlight = "shade";
-    //             break;
-    //         default:
-    //             sunlight = "none";
-    //     }
-    //     return sunlight;
-    // }
 
     public JPanel getPanel() {
         return panel;

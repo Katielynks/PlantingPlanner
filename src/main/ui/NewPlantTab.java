@@ -9,22 +9,28 @@ import java.awt.*;
 
 // New Plant Tab of the Planting Planner application
 public class NewPlantTab extends Tabs {
+    private static final int column1 = 125;
+    private static final int column2 = 420;    
+    
     private JLabel title;
-    private JLabel careInformationHeading;
-    private JLabel notesHeading;   
-    private JTextArea notes;
+    private JPanel componentPane;
+
+    private PlantCollection collection;
+
     private JFormattedTextField nameField;
     private JFormattedTextField subTypeField;
     private JComboBox<String> categoryField;
-    private int column1 = 125;
-    private int column2 = 420;
+
+    private JLabel careInformationHeading;
     private JFormattedTextField wateringFreqField;
     private JComboBox<String> sunlightField;
     private JFormattedTextField soilTypeField;
     private JFormattedTextField fertilizerField;
+
+    private JLabel notesHeading;   
+    private JTextArea notes;
+    
     private JButton saveButton;
-    private JPanel componentPane;
-    private PlantCollection collection;
 
 
     //Constructs a new tab with title, headings, labels, and fields
@@ -61,6 +67,7 @@ public class NewPlantTab extends Tabs {
     }
 
 
+    //MODIFIES: this
     //EFFECTS: Creates all plant fields with labels and corresponding fields
     private void createPlantFields() {
         nameField = createLabeledField("Name:", column1, 190, 195, 190);
@@ -222,6 +229,7 @@ public class NewPlantTab extends Tabs {
         fertilizerField.setText("");
         notes.setText("");
     }
+    
     public JPanel getPanel() {
         return panel;
     }

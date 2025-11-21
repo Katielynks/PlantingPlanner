@@ -11,6 +11,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ViewCollectionsTab extends Tabs {
+    private static final int column1 = 30;
+
     private JLabel title;
     private JPanel componentPane;
 
@@ -24,10 +26,11 @@ public class ViewCollectionsTab extends Tabs {
     private JLabel listHeading;
     private JPanel radioButtons;
 
-    private int column1 = 30;
     private DefaultTableModel tableModel;
-    private final String[] columnNames = {"Name",
-                                          "Subtype"};
+    private static final String[] columnNames = {
+        "Name", 
+        "Subtype"
+    };
     private JTable list;
 
     public ViewCollectionsTab(PlantCollection collection) {
@@ -49,18 +52,7 @@ public class ViewCollectionsTab extends Tabs {
 
         radioButtons = createRadioButtons();
 
-        tableModel = new DefaultTableModel(listToArray(collection.getCollection()), columnNames);
-        list = new JTable(tableModel);
-        list.setFont(new Font("Cambria", Font.BOLD, 16));
-        JScrollPane listScrollPane = new JScrollPane(list);
-        styleScrollPane(listScrollPane);
-        listScrollPane.setBounds(410,205,275,300);
-
-
-
-        JTableHeader header = list.getTableHeader();
-        header.setFont(new Font("Cambria", Font.BOLD, 18));
-        header.setBackground(new Color (131, 210, 230));
+        JScrollPane listScrollPane = createTable();
 
         componentPane.add(title);
         componentPane.add(selectionHeading);
@@ -71,6 +63,25 @@ public class ViewCollectionsTab extends Tabs {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: Creates a scrolling table with 2 columns displaying plant name and subtype
+    private JScrollPane createTable() {
+        tableModel = new DefaultTableModel(listToArray(collection.getCollection()), columnNames);
+        
+        list = new JTable(tableModel);
+        list.setFont(new Font("Cambria", Font.BOLD, 16));
+
+        JScrollPane listScrollPane = new JScrollPane(list);
+        styleScrollPane(listScrollPane);
+        listScrollPane.setBounds(410,205,275,300);
+
+        JTableHeader header = list.getTableHeader();
+        header.setFont(new Font("Cambria", Font.BOLD, 18));
+        header.setBackground(new Color(131, 210, 230));
+
+        return listScrollPane;
+    }
+
     private void styleScrollPane(JScrollPane scrollPane) {
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scrollPane.setOpaque(true);
@@ -78,6 +89,7 @@ public class ViewCollectionsTab extends Tabs {
         scrollPane.getViewport().setBackground(new Color(230, 249, 255));
     }
 
+    //EFFECTS: Returns a 2D Object array where every row corresponds to a Plant in the collection
     private Object [][] listToArray(ArrayList<Plant> collection) {
         Object[][] dataCollection = new Object[collection.size()][2];
         
@@ -92,39 +104,17 @@ public class ViewCollectionsTab extends Tabs {
 
     }
 
+    //MODIFIES: this
     //EFFECTS: Generates the radiobuttons and text associated
     private JPanel createRadioButtons() {
-        optionAll = new JRadioButton("All Plants");
-        styleButton(optionAll, column1, 70);
-        optionAll.addActionListener(e -> {
-            listHeading.setText("All Plants: ");
-            tableModel.setDataVector(listToArray(collection.getCollection()), columnNames);
+        
+        optionAll = createFilterButton("All Plants", "All Plants:", 70);
 
-        });
+        optionStructurals = createFilterButton("Structurals", "Structural Plants:", 110);
 
-        optionStructurals = new JRadioButton("Structurals");
-        styleButton(optionStructurals, column1, 110);
-        optionStructurals.addActionListener(e -> {
-            listHeading.setText("Structural Plants: ");
-            tableModel.setDataVector(listToArray(collection.filterStructurals()), columnNames);
+        optionFlowers = createFilterButton("Flowers", "Flowering Plants:", 150);
 
-        });
-
-        optionFlowers = new JRadioButton("Flowers");
-        styleButton(optionFlowers, column1, 150);
-        optionFlowers.addActionListener(e -> {
-            listHeading.setText("Flowering Plants: ");
-            tableModel.setDataVector(listToArray(collection.filterFlowers()), columnNames);
-
-        });
-
-        optionFoods = new JRadioButton("Foods");
-        styleButton(optionFoods, column1, 190);
-        optionFoods.addActionListener(e -> {
-            listHeading.setText("Food Producing Plants: ");
-            tableModel.setDataVector(listToArray(collection.filterFood()), columnNames);
-
-        });
+        optionFoods = createFilterButton("Foods", "Food Producing Plants:", 190);
 
         ButtonGroup group = new ButtonGroup();
         group.add(optionAll);
@@ -145,6 +135,30 @@ public class ViewCollectionsTab extends Tabs {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: Generates the button label with the corresponding header text and lists displayed
+    private JRadioButton createFilterButton(String label, String heading, int posY) {
+        JRadioButton button = new JRadioButton(label);
+        styleButton(button, column1, posY);
+        button.addActionListener(e -> {
+            ArrayList<Plant> listToShow;
+
+            if (label.equals("All Plants")) {
+                listToShow = collection.getCollection();
+            } else if (label.equals("Structurals")) {
+                listToShow = collection.filterStructurals();
+            } else if (label.equals("Flowers")) {
+                listToShow = collection.filterFlowers();
+            } else {
+                listToShow = collection.filterFood();
+            }
+            listHeading.setText(heading);
+            tableModel.setDataVector(listToArray(listToShow), columnNames);
+        });
+        return button;
+    }
+
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the radio buttons
     private void styleButton(JRadioButton button, int posX, int posY) {
         button.setBounds(posX,posY,150,30);
@@ -165,6 +179,7 @@ public class ViewCollectionsTab extends Tabs {
         
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the headings
     private void styleHeading(JLabel heading, int posX, int posY) {
         heading.setFont(new Font("Gabriola", Font.BOLD, 35));

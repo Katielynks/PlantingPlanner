@@ -27,7 +27,7 @@ public class PlantAppUI extends JFrame {
 
         tabbedPane = new JTabbedPane();
         tabbedPane.setFont(new Font("Cambria", Font.BOLD, 16));
-        tabbedPane.setBackground(new Color (131, 210, 230));
+        tabbedPane.setBackground(new Color(131, 210, 230));
         tabbedPane.setForeground(new Color(0,0,0));
 
         tabbedPane.addTab("Home", new HomePageTab(collection).getPanel());

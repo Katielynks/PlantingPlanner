@@ -13,16 +13,18 @@ import java.util.ArrayList;
 public class EditPlantTab extends Tabs {
     private static final int columnLabel = 420;
     private static final int columnField = 520;
-    private JLabel title;
+
     private JPanel componentPane;
 
-    private PlantCollection collection;
+    private JLabel title;
     private JLabel selectionHeading;
-    private JLabel listHeading;
+    private JLabel listHeading;   
+    
+    private PlantCollection collection;
+    private String plantName;
 
     private DefaultTableModel tableModel;
-    private final String[] columnNames = {"Notes"};
-    private JTable list;
+    
     private JFormattedTextField nameField;
     private JFormattedTextField selectionField;
     private JFormattedTextField subTypeField;
@@ -31,14 +33,18 @@ public class EditPlantTab extends Tabs {
     private JComboBox<String> sunlightField;
     private JFormattedTextField soilTypeField;
     private JFormattedTextField fertilizerField;
-    private JButton enterButton;
-    private String plantName;
-    private JButton removeButton;
-    private JButton addButton;
+
     private JTextArea newNoteArea;
+    private final String[] columnNames = {"Notes"};
+    private JTable list;
     private JScrollPane newNoteScrollPane;
+
+    private JButton enterButton;
+    private JButton removeButton;
+    private JButton addButton;    
     private JButton saveButton;
-    
+
+    // Edit Plant Tab of the Planting Planner application
     public EditPlantTab(PlantCollection collection) {
         setupBackgroundPanel("images/editPlantTabBackground.png");
         
@@ -75,7 +81,7 @@ public class EditPlantTab extends Tabs {
 
         JTableHeader header = list.getTableHeader();
         header.setFont(new Font("Cambria", Font.BOLD, 18));
-        header.setBackground(new Color (131, 210, 230));
+        header.setBackground(new Color(131, 210, 230));
 
         removeButton = new JButton("Remove");
         styleButton(removeButton, 215,437);
@@ -117,6 +123,8 @@ public class EditPlantTab extends Tabs {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: Creates a new plant with new fields and replaces the old plant
     private void updateAllFields(String plantName) {
         String name = nameField.getText();
         String subtype = subTypeField.getText();
@@ -159,6 +167,7 @@ public class EditPlantTab extends Tabs {
         collectionLoadedPopUp("images/dialoguePlantUpdated.png");
     }
 
+    //MODIFIES: this
     //EFFECTS: Creates all plant fields with labels and corresponding fields
     private void createPlantFields() {
         selectionField = createLabeledField("", 265, 150, 93, 190);
@@ -181,6 +190,7 @@ public class EditPlantTab extends Tabs {
         fertilizerField = createLabeledField("Fertilizer:", columnLabel, 420, columnField, 420);
     }
 
+    //MODIFIES: this
     //EFFECTS: adds all the fields according to the inputted plant name
     private void addAllFields(String plantName) {
         Plant plantToView = collection.getPlant(plantName);
@@ -200,6 +210,7 @@ public class EditPlantTab extends Tabs {
 
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the notes text area
     public JScrollPane styleNotes(JTextArea notes, int posX, int posY) {
         notes.setFont(new Font("Cambria", Font.BOLD, 18));
