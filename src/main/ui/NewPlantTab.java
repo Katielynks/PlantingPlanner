@@ -181,29 +181,20 @@ public class NewPlantTab extends Tabs {
         return notesScrollPane;
     }
 
+    //MODIFIES: this
     //EFFECTS: Creates a new plant with the user input in the fields
     private void createPlant() {
         String name = nameField.getText();
         String subtype = subTypeField.getText();
-        String categoryString = (String) categoryField.getSelectedItem();
-        int category = 1;
-        if (categoryString.equals("Partial sun")) {
-            category = 2;
-        } else if (categoryString.equals("Shade")) {
-            category = 3;
-        }
+
+        int category = categoryToInt((String) categoryField.getSelectedItem());
 
         Plant newPlant = new Plant(name, subtype, category);
 
         newPlant.changeWateringFreqInfo(wateringFreqField.getText());
 
-        String sunlightString = (String) sunlightField.getSelectedItem();
-        int sunlight = 1;
-        if (sunlightString.equals("Flowers")) {
-            sunlight = 2;
-        } else if (sunlightString.equals("Foods")) {
-            sunlight = 3;
-        }
+        int sunlight = sunlightToInt((String) sunlightField.getSelectedItem());
+
         newPlant.changeSunlightInfo(sunlight);
 
         newPlant.changeSoilTypeInfo(soilTypeField.getText());
@@ -218,6 +209,26 @@ public class NewPlantTab extends Tabs {
 
     }
 
+    //EFFECTS: converts category to corresponding integer
+    private int categoryToInt(String categoryString) {
+        if (categoryString.equals("Flowers")) {
+            return 2;
+        } else if (categoryString.equals("Foods")) {
+            return 3;
+        }
+        return 1;
+    }
+
+    //EFFECTS: converts sunlight to corresponding integer
+    private int sunlightToInt(String sunlightString) {
+        if (sunlightString.equals("Partial sun")) {
+            return 2;
+        } else if (sunlightString.equals("Shade")) {
+            return 3;
+        }
+        return 1;
+    }
+
     //EFFECTS: clears the user input in all fields
     private void clearAllFields() {
         nameField.setText("");
@@ -229,7 +240,7 @@ public class NewPlantTab extends Tabs {
         fertilizerField.setText("");
         notes.setText("");
     }
-    
+
     public JPanel getPanel() {
         return panel;
     }

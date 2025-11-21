@@ -130,9 +130,9 @@ public class EditPlantTab extends Tabs {
         String subtype = subTypeField.getText();
         String categoryString = (String) categoryField.getSelectedItem();
         int category = 1;
-        if (categoryString.equals("Partial sun")) {
+        if (categoryString.equals("Flowers")) {
             category = 2;
-        } else if (categoryString.equals("Shade")) {
+        } else if (categoryString.equals("Foods")) {
             category = 3;
         }
 
@@ -142,9 +142,9 @@ public class EditPlantTab extends Tabs {
 
         String sunlightString = (String) sunlightField.getSelectedItem();
         int sunlight = 1;
-        if (sunlightString.equals("Flowers")) {
+        if (sunlightString.equals("Partial sun")) {
             sunlight = 2;
-        } else if (sunlightString.equals("Foods")) {
+        } else if (sunlightString.equals("Shade")) {
             sunlight = 3;
         }
         plantUpdated.changeSunlightInfo(sunlight);
