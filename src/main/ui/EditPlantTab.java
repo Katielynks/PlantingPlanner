@@ -4,12 +4,15 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.Plant;
 import model.PlantCollection;
 
 import java.awt.*;
 import java.util.ArrayList;
 
+//Edit tab of the Planting Planner application
+@ExcludeFromJacocoGeneratedReport
 public class EditPlantTab extends Tabs {
     private static final int columnLabel = 420;
     private static final int columnField = 520;
@@ -201,26 +204,6 @@ public class EditPlantTab extends Tabs {
         collectionLoadedPopUp("images/dialoguePlantUpdated.png");
     }
 
-    //EFFECTS: converts category to corresponding integer
-    private int categoryToInt(String categoryString) {
-        if (categoryString.equals("Flowers")) {
-            return 2;
-        } else if (categoryString.equals("Foods")) {
-            return 3;
-        }
-        return 1;
-    }
-
-    //EFFECTS: converts sunlight to corresponding integer
-    private int sunlightToInt(String sunlightString) {
-        if (sunlightString.equals("Partial sun")) {
-            return 2;
-        } else if (sunlightString.equals("Shade")) {
-            return 3;
-        }
-        return 1;
-    }
-
     //MODIFIES: this
     //EFFECTS: Creates all plant fields with labels and corresponding fields
     private void createPlantFields() {
@@ -279,7 +262,8 @@ public class EditPlantTab extends Tabs {
         return notesScrollPane;
     }
 
-    //EFFECTS: Constructs a combo box
+    //MODIFIES: this
+    //EFFECTS: Constructs a combo box and adds it to the panel
     private JComboBox<String> createLabeledComboBox(String labelText, 
                                                     String[] options, 
                                                     int labelX, 
@@ -299,7 +283,8 @@ public class EditPlantTab extends Tabs {
 
     }
 
-    //EFFECTS: Constructs a text field with label and field
+    //MODIFIES: this
+    //EFFECTS: Constructs a text field with label and field and adds it to the panel
     private JFormattedTextField createLabeledField(String labelText, int labelX, int labelY, int fieldX, int fieldY) {
         JLabel label = new JLabel(labelText);
         styleLabel(label, labelX, labelY);
@@ -311,6 +296,7 @@ public class EditPlantTab extends Tabs {
         return field;
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the fields
     public void styleField(JFormattedTextField field, int posX, int posY) {
         field.setBounds(posX, posY,150,30);
@@ -319,6 +305,7 @@ public class EditPlantTab extends Tabs {
         field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the combo boxes
     public void styleCategoryComboBox(JComboBox<String> categoryCBox, int posX, int posY, int width) {
         categoryCBox.setBounds(posX, posY, width,30);
@@ -326,6 +313,8 @@ public class EditPlantTab extends Tabs {
         categoryCBox.setBackground(scrollBkgndColor);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Changes appearance of the scroll pane
     private void styleScrollPane(JScrollPane scrollPane) {
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scrollPane.setOpaque(true);
@@ -366,7 +355,7 @@ public class EditPlantTab extends Tabs {
         labelName.setOpaque(false);
         labelName.setBounds(posX, posY, 200, 30);
     }
-    
+
     //MODIFIES: this
     //EFFECTS: Customizes the appearance of the table header
     private void styleTableHeader(JTable table) {

@@ -6,6 +6,7 @@ import java.awt.*;
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
 import model.PlantCollection;
 
+// Planting Planner application
 @ExcludeFromJacocoGeneratedReport
 public class PlantAppUI extends JFrame {
     private JTabbedPane tabbedPane;

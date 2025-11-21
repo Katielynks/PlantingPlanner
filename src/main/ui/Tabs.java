@@ -28,6 +28,7 @@ public abstract class Tabs {
         new javax.swing.Timer(3000, evt -> popUp.dispose()).start();
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes the appearance of the button
     protected void styleButton(JButton button, int posX, int posY) {
         button.setBounds(posX, posY, 200, 40);
@@ -39,6 +40,7 @@ public abstract class Tabs {
         button.setFocusPainted(false);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes the appearance of the title
     protected void styleTitle(JLabel title, int posX, int posY) {
         title.setFont(new Font("Gabriola", Font.BOLD, 55));
@@ -48,6 +50,7 @@ public abstract class Tabs {
         title.setOpaque(false);
     }
 
+    //MODIFIES: this
     //EFFECTS: Constructs a panel with background image
     protected void setupBackgroundPanel(String fileName) {
         backgroundImage = new ImageIcon(fileName).getImage();
@@ -64,6 +67,7 @@ public abstract class Tabs {
         
     }
 
+    //MODIFIES: this
     //EFFECTS: Converts the chosen categories indicated with numbers to strings
     protected String categoryToString(Plant p) {
         String category;
@@ -83,7 +87,7 @@ public abstract class Tabs {
         return category;
     }
 
-
+    //MODIFIES: this
     //EFFECTS: Changes the chosen categories for sunlight to strings
     protected String sunlightToString(Plant p) {
         String sunlight;
@@ -101,6 +105,26 @@ public abstract class Tabs {
                 sunlight = "";
         }
         return sunlight;
+    }
+
+    //EFFECTS: converts category to corresponding integer
+    protected int categoryToInt(String categoryString) {
+        if (categoryString.equals("Flowers")) {
+            return 2;
+        } else if (categoryString.equals("Foods")) {
+            return 3;
+        }
+        return 1;
+    }
+
+    //EFFECTS: converts sunlight to corresponding integer
+    protected int sunlightToInt(String sunlightString) {
+        if (sunlightString.equals("Partial sun")) {
+            return 2;
+        } else if (sunlightString.equals("Shade")) {
+            return 3;
+        }
+        return 1;
     }
 
 }

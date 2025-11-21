@@ -98,6 +98,7 @@ public class HomePageTab extends Tabs {
 
     }
 
+    //MODIFIES: this
     //EFFECTS: saves the collection to file
     private void button2Action(JButton b2) {
         jsonWriter = new JsonWriter(JSON_STORE);

@@ -85,6 +85,8 @@ public class ViewCollectionsTab extends Tabs {
         return listScrollPane;
     }
 
+    //MODIFIES: this
+    //EFFECTS:changes the appearance of the scroll pane
     private void styleScrollPane(JScrollPane scrollPane) {
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scrollPane.setOpaque(true);
@@ -92,6 +94,7 @@ public class ViewCollectionsTab extends Tabs {
         scrollPane.getViewport().setBackground(BkgndColor);
     }
 
+    //MODIFIES: this
     //EFFECTS: Returns a 2D Object array where every row corresponds to a Plant in the collection
     private Object [][] listToArray(ArrayList<Plant> collection) {
         Object[][] dataCollection = new Object[collection.size()][2];

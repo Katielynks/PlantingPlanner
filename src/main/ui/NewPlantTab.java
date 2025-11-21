@@ -88,9 +88,9 @@ public class NewPlantTab extends Tabs {
         soilTypeField = createLabeledField("Soil Type:", column2, 370, 515, 370);
 
         fertilizerField = createLabeledField("Fertilizer:", column2, 420, 515, 420);
-
     }
 
+    //MODIFIES: this
     //EFFECTS: Constructs a text field with label and field
     private JFormattedTextField createLabeledField(String labelText, int labelX, int labelY, int fieldX, int fieldY) {
         JLabel label = new JLabel(labelText);
@@ -103,6 +103,7 @@ public class NewPlantTab extends Tabs {
         return field;
     }
 
+    //MODIFIES: this
     //EFFECTS: Constructs a combo box
     private JComboBox<String> createLabeledComboBox(String labelText, 
                                                     String[] options, 
@@ -120,9 +121,9 @@ public class NewPlantTab extends Tabs {
         componentPane.add(comboBox);
 
         return comboBox;
-
     }
 
+    //MODIFIES: this
     //EFFECTS: Constructs a notes section with heading and scroll
     private void createNotesSection(int posX, int posY) {
         notes = new JTextArea(5, 20);
@@ -138,6 +139,7 @@ public class NewPlantTab extends Tabs {
         componentPane.add(notesScrollPane);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the headings
     public void styleHeading(JLabel heading, int posX, int posY) {
         heading.setFont(new Font("Gabriola", Font.BOLD, 35));
@@ -147,6 +149,7 @@ public class NewPlantTab extends Tabs {
         heading.setOpaque(false);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of labels next to each field
     public void styleLabel(JLabel labelName, int posX, int posY) {
         labelName.setFont(new Font("Cambria", Font.BOLD, 20));
@@ -155,6 +158,7 @@ public class NewPlantTab extends Tabs {
         labelName.setBounds(posX, posY, 200, 30);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the fields
     public void styleField(JFormattedTextField field, int posX, int posY) {
         field.setBounds(posX, posY,150,30);
@@ -163,6 +167,7 @@ public class NewPlantTab extends Tabs {
         field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     } 
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the combo boxes
     public void styleCategoryComboBox(JComboBox<String> categoryCBox, int posX, int posY, int width) {
         categoryCBox.setBounds(posX, posY, width,30);
@@ -170,6 +175,7 @@ public class NewPlantTab extends Tabs {
         categoryCBox.setBackground(BkgndColor);
     }
 
+    //MODIFIES: this
     //EFFECTS: Changes appearance of the notes text area
     public JScrollPane styleNotes(JTextArea notes, int posX, int posY) {
         notes.setFont(new Font("Cambria", Font.BOLD, 18));
@@ -212,26 +218,7 @@ public class NewPlantTab extends Tabs {
 
     }
 
-    //EFFECTS: converts category to corresponding integer
-    private int categoryToInt(String categoryString) {
-        if (categoryString.equals("Flowers")) {
-            return 2;
-        } else if (categoryString.equals("Foods")) {
-            return 3;
-        }
-        return 1;
-    }
-
-    //EFFECTS: converts sunlight to corresponding integer
-    private int sunlightToInt(String sunlightString) {
-        if (sunlightString.equals("Partial sun")) {
-            return 2;
-        } else if (sunlightString.equals("Shade")) {
-            return 3;
-        }
-        return 1;
-    }
-
+    //MODIFIES: this
     //EFFECTS: clears the user input in all fields
     private void clearAllFields() {
         nameField.setText("");
