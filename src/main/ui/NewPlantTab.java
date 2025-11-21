@@ -12,7 +12,8 @@ import java.awt.*;
 @ExcludeFromJacocoGeneratedReport
 public class NewPlantTab extends Tabs {
     private static final int column1 = 125;
-    private static final int column2 = 420;    
+    private static final int column2 = 420;
+    private static final Color BkgndColor = new Color(230, 249, 255); 
     
     private JLabel title;
     private JPanel componentPane;
@@ -158,7 +159,7 @@ public class NewPlantTab extends Tabs {
     public void styleField(JFormattedTextField field, int posX, int posY) {
         field.setBounds(posX, posY,150,30);
         field.setFont(new Font("Cambria", Font.BOLD, 18));
-        field.setBackground(new Color(230, 249, 255));
+        field.setBackground(BkgndColor);
         field.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     } 
 
@@ -166,13 +167,13 @@ public class NewPlantTab extends Tabs {
     public void styleCategoryComboBox(JComboBox<String> categoryCBox, int posX, int posY, int width) {
         categoryCBox.setBounds(posX, posY, width,30);
         categoryCBox.setFont(new Font("Cambria", Font.BOLD, 18));
-        categoryCBox.setBackground(new Color(230, 249, 255));
+        categoryCBox.setBackground(BkgndColor);
     }
 
     //EFFECTS: Changes appearance of the notes text area
     public JScrollPane styleNotes(JTextArea notes, int posX, int posY) {
         notes.setFont(new Font("Cambria", Font.BOLD, 18));
-        notes.setBackground(new Color(230, 249, 255));
+        notes.setBackground(BkgndColor);
         notes.setLineWrap(true);
 
         JScrollPane notesScrollPane = new JScrollPane(notes);

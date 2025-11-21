@@ -14,6 +14,7 @@ import java.util.ArrayList;
 @ExcludeFromJacocoGeneratedReport
 public class ViewCollectionsTab extends Tabs {
     private static final int column1 = 30;
+    private static final Color BkgndColor = new Color(230, 249, 255); 
 
     private JLabel title;
     private JPanel componentPane;
@@ -87,8 +88,8 @@ public class ViewCollectionsTab extends Tabs {
     private void styleScrollPane(JScrollPane scrollPane) {
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         scrollPane.setOpaque(true);
-        scrollPane.setBackground(new Color(230, 249, 255));
-        scrollPane.getViewport().setBackground(new Color(230, 249, 255));
+        scrollPane.setBackground(BkgndColor);
+        scrollPane.getViewport().setBackground(BkgndColor);
     }
 
     //EFFECTS: Returns a 2D Object array where every row corresponds to a Plant in the collection
