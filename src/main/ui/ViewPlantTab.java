@@ -106,7 +106,7 @@ public class ViewPlantTab extends Tabs {
     //MODIFIES: this
     //EFFECTS: adds all the fields according to the inputted plant name
     private void addAllFields(String plantName) {
-        Plant plantToView = collection.getPlant(plantName);
+        Plant plantToView = collection.getPlantToView(plantName);
         if (plantToView == null) {
             collectionLoadedPopUp("images/dialogueNotFound.png");
         } else {

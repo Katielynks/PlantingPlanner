@@ -193,13 +193,13 @@ public class EditPlantTab extends Tabs {
         for (int row = 0; row < tableModel.getRowCount(); row++) {
             Object value = tableModel.getValueAt(row, 0);
             if (value != null) {
-                plantUpdated.addNote(value.toString());
+                plantUpdated.loadNote(value.toString());
             }
         }
 
         collection.removeFromCollection(plantName);
 
-        collection.addToCollection(plantUpdated);
+        collection.saveEditedPlantToCollection(plantUpdated);
 
         collectionLoadedPopUp("images/dialoguePlantUpdated.png");
     }

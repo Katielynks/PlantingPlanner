@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Event;
+import model.EventLog;
 import model.Plant;
 import model.PlantCollection;
 
@@ -26,6 +28,7 @@ public class JsonReader {
     public PlantCollection read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("Loaded plant collection from file"));
         return parsePlantCollection(jsonObject);
     }
 
@@ -71,7 +74,7 @@ public class JsonReader {
         JSONArray jsonNotes = jsonObject.getJSONArray("notes");
 
         Plant plant = new Plant(name, subtype, category);
-        pc.addToCollection(plant);
+        pc.loadToCollection(plant);
         plant.setLastWatered(lastWatered);
         plant.changeWateringFreqInfo(wateringFreq);
         plant.changeSunlightInfo(sunlight);
@@ -79,7 +82,7 @@ public class JsonReader {
         plant.changeFertilizerInfo(fertilizer);
 
         for (int i = 0; i < jsonNotes.length(); i++) {
-            plant.addNote(jsonNotes.getString(i));
+            plant.loadNote(jsonNotes.getString(i));
         }
 
     }

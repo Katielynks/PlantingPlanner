@@ -19,6 +19,20 @@ public class PlantCollection implements Writable {
     //EFFECTS: adds a Plant to the list of all Plants
     public void addToCollection(Plant plant) {
         collection.add(plant);
+        EventLog.getInstance().logEvent(new Event("Added plant " + plant.getName() + " to collection"));
+    }
+
+    //MODIFIES: this
+    //EFFECTS: loads a Plant to the list of all Plants
+    public void loadToCollection(Plant plant) {
+        collection.add(plant);
+    }
+
+    //MODIFIES: this
+    //EFFECTS: loads a Plant to the list of all Plants
+    public void saveEditedPlantToCollection(Plant plant) {
+        collection.add(plant);
+        EventLog.getInstance().logEvent(new Event("Edited and saved changes of plant " + plant.getName() + " to collection"));
     }
 
     //MODIFIES: this
@@ -45,6 +59,13 @@ public class PlantCollection implements Writable {
         }
         return foundplant;
     }
+
+    //EFFECTS: returns a plant to view with same name as specified
+    public Plant getPlantToView(String name) {
+        EventLog.getInstance().logEvent(new Event("Viewed the plant " + name + " from the collection"));
+        return getPlant(name);
+    }
+
 
     //EFFECTS: returns the entire collection of plants
     public ArrayList<Plant> getCollection() {

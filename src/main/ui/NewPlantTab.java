@@ -210,7 +210,7 @@ public class NewPlantTab extends Tabs {
 
         newPlant.changeFertilizerInfo(fertilizerField.getText());
 
-        newPlant.addNote(notes.getText());
+        newPlant.loadNote(notes.getText());
 
         collection.addToCollection(newPlant);
 

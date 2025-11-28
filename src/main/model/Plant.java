@@ -76,6 +76,13 @@ public class Plant implements Writable {
     //EFFECTS: adds a note about the plant
     public void addNote(String note) {
         notes.add(note);
+        EventLog.getInstance().logEvent(new Event("Added note to plant " + getName()));
+    }
+
+    //MODIFIES: this
+    //EFFECTS: loads a note about the plant to the list of notes
+    public void loadNote(String note) {
+        notes.add(note);
     }
 
     //REQUIRES: notes.size() >= 1 and noteNumber is between 1 and notes.size()
@@ -83,6 +90,7 @@ public class Plant implements Writable {
     //EFFECTS: removes the note about the plant corresponding to its number
     public void removeNote(int noteNumber) {
         notes.remove(noteNumber - 1);
+        EventLog.getInstance().logEvent(new Event("Removed note from plant " + getName()));
     }
 
     //MODIFIES: this, careInfo
@@ -109,6 +117,7 @@ public class Plant implements Writable {
     public void changeFertilizerInfo(String newFertilizer) {
         careInfo.setFertilizer(newFertilizer);
     }
+
 
     @Override
     public JSONObject toJson() {

@@ -88,7 +88,7 @@ public class HomePageTab extends Tabs {
             try {
                 PlantCollection loaded = jsonReader.read();
                 for (Plant p : loaded.getCollection()) {
-                    collection.addToCollection(p);
+                    collection.loadToCollection(p);
                 }
                 collectionLoadedPopUp("images/dialogue1.png");
             } catch (IOException n) {

@@ -2,6 +2,8 @@ package persistence;
 
 import java.io.*;
 
+import model.Event;
+import model.EventLog;
 import model.PlantCollection;
 import org.json.JSONObject;
 
@@ -27,7 +29,8 @@ public class JsonWriter {
     //EFFECTS: writes JSON representation of PlantCollection to file
     public void write(PlantCollection pc) {
         JSONObject json = pc.toJson();
-        saveToFile(json.toString(TAB));      
+        saveToFile(json.toString(TAB)); 
+        EventLog.getInstance().logEvent(new Event("Saved plant collection to file"));     
     }
 
     //MODIFIES: this

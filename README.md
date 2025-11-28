@@ -42,3 +42,26 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 - You can reload the state of the application by clicking the "Load Collection" button on the "Home Tab"
 - You can view any plant in your collection in the "View Plant" tab by inserting the name of the plant and clicking on enter. The information regarding that plant will display in the fields below.
 - You can edit any plant fields in the "Edit Plant" tab by inserting the name of your plant and clicking the "Enter" button. You can add notes by typing them in the text box underneath the notes display and clicking "Add". You can remove any notes by selecting the note in the list and clicking "Remove". Once all changes are made, click "Save" to save your changes
+
+---
+
+## *Phase 4: Task 2*
+
+Below is a sample of events that occur when the program runs:
+
+Thu Nov 27 21:45:05 PST 2025
+Loaded plant collection from file
+Thu Nov 27 21:45:16 PST 2025
+Added plant cactus to collection
+Thu Nov 27 21:45:22 PST 2025
+Viewed the plant cactus from the collection
+Thu Nov 27 21:45:41 PST 2025
+Added note to plant cactus
+Thu Nov 27 21:45:44 PST 2025
+Removed note from plant cactus
+Thu Nov 27 21:45:46 PST 2025
+Edited and saved changes of plant cactus to collection
+Thu Nov 27 21:45:54 PST 2025
+Saved plant collection to file
+
+---
