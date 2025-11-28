@@ -49,19 +49,19 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 
 Below is a sample of events that occur when the program runs:
 
-Thu Nov 27 21:45:05 PST 2025
-Loaded plant collection from file
-Thu Nov 27 21:45:16 PST 2025
-Added plant cactus to collection
-Thu Nov 27 21:45:22 PST 2025
-Viewed the plant cactus from the collection
-Thu Nov 27 21:45:41 PST 2025
-Added note to plant cactus
-Thu Nov 27 21:45:44 PST 2025
-Removed note from plant cactus
-Thu Nov 27 21:45:46 PST 2025
-Edited and saved changes of plant cactus to collection
-Thu Nov 27 21:45:54 PST 2025
-Saved plant collection to file
+Thu Nov 27 21:45:05 PST 2025<br>
+Loaded plant collection from file<br>
+Thu Nov 27 21:45:16 PST 2025<br>
+Added plant cactus to collection<br>
+Thu Nov 27 21:45:22 PST 2025<br>
+Viewed the plant cactus from the collection<br>
+Thu Nov 27 21:45:41 PST 2025<br>
+Added note to plant cactus<br>
+Thu Nov 27 21:45:44 PST 2025<br>
+Removed note from plant cactus<br>
+Thu Nov 27 21:45:46 PST 2025<br>
+Edited and saved changes of plant cactus to collection<br>
+Thu Nov 27 21:45:54 PST 2025<br>
+Saved plant collection to file<br>
 
 ---
