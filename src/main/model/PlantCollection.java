@@ -32,7 +32,8 @@ public class PlantCollection implements Writable {
     //EFFECTS: loads a Plant to the list of all Plants
     public void saveEditedPlantToCollection(Plant plant) {
         collection.add(plant);
-        EventLog.getInstance().logEvent(new Event("Edited and saved changes of plant " + plant.getName() + " to collection"));
+        EventLog.getInstance().logEvent(new Event("Edited and saved changes of plant " + plant.getName() 
+                    + " to collection"));
     }
 
     //MODIFIES: this
