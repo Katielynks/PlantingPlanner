@@ -2,8 +2,11 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import ca.ubc.cs.ExcludeFromJacocoGeneratedReport;
+import model.EventLog;
 import model.PlantCollection;
 
 // Planting Planner application
@@ -38,6 +41,7 @@ public class PlantAppUI extends JFrame {
         tabbedPane.addTab("View Collections", new ViewCollectionsTab(collection).getPanel());
 
         add(tabbedPane);
+        setupWindowCloseBehaviour();
 
         pack();
         setLocationRelativeTo(null);
@@ -48,4 +52,19 @@ public class PlantAppUI extends JFrame {
     public static void main(String[] args) {
         new PlantAppUI();
     }
+
+    private void setupWindowCloseBehaviour() {
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                for (model.Event event : EventLog.getInstance()) {
+                    System.out.println(event);
+                }
+
+                EventLog.getInstance().clear();
+            }
+        });
+    }
+
+
 }
