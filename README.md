@@ -65,3 +65,13 @@ Thu Nov 27 21:45:54 PST 2025<br>
 Saved plant collection to file<br>
 
 ---
+
+## *Phase 4: Task 3*
+
+Below is the UML design diagram for this project: <br>
+
+![UML_Design_Diagram](UML_Design_Diagram.png) <br>
+
+If I had more time to work on this project, I would mainly focus on reducing some of the coupling between the UI tabs and the "PlantCollection" class. Currently, the "PlantCollection" acts as a central hub for nearly all operations and each tab interacts with it directly to modify or access data. While this approach works, it spreads plant-related logic across multiple UI classes making it harder to maintain over time. A useful refactoring would be to introduce a controller that handles updates to the model. This would give each tab a cleaner, more consistent interface for interacting with the data.
+
+Another potential refactoring is regarding how the "tab" classes still contain some similar patterns for layout and interaction. When developing the tabs, I extracted as much as I could in the time given to reduce duplication. However, with more time, I could further refactor these classes by extracting more of the less-significant shared functionality into the "Tabs" abstract class or seperate helper classes dedicated to layout and component styling. For example, I could extract common styling elements such as shared colors, fonts, and component layers into helper classes so that the UI design is easier to update across all tabs. Overall, I am very happy with how the project turned out! Even with the challenges along the way it was incredibly rewarding to see everything come together and each challenge only made the end result feel even more meaningful. Watching it grow from a small idea into something real and interactive felt a bit like tending a little garden of my own! 
