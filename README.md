@@ -16,6 +16,7 @@ I’ve always had a love for plants and gardening so my collection has grown imm
 
 Creating **Planting Planner** is a way for me to build a space where I and other users can track, document, and care for plants in a thoughtful and organized way. It is like a digital garden journal that can help support mindful and consistent plant care, even when life gets hectic. 
 
+![Home Page](HomePageVisual.png) <br>
 
 ---
 
@@ -43,6 +44,7 @@ Creating **Planting Planner** is a way for me to build a space where I and other
 - You can view any plant in your collection in the "View Plant" tab by inserting the name of the plant and clicking on enter. The information regarding that plant will display in the fields below.
 - You can edit any plant fields in the "Edit Plant" tab by inserting the name of your plant and clicking the "Enter" button. You can add notes by typing them in the text box underneath the notes display and clicking "Add". You can remove any notes by selecting the note in the list and clicking "Remove". Once all changes are made, click "Save" to save your changes
 
+![Tabs](TabsVisual.png) <br>
 ---
 
 ## *Phase 4: Task 2*
